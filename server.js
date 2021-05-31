@@ -4,7 +4,7 @@ const app = express()
 const PORT = process.env.PORT || 80
 
 app.get('/', (req, res) => {
-  res.end(`<h1>Home page server file. Test value - ${precess.evn.TEST}.</h1>`)
+  res.end(`<h1>Home page server file. Test value - ${process.env.TEST}.</h1>`)
 })
 
 app.get('/about', (req, res) => {
