@@ -1,4 +1,5 @@
 const express = require('express')
+const request = require('request')
 const app = express()
 
 const PORT = process.env.PORT || 80
@@ -7,7 +8,12 @@ app.use(express.json({ extended: true }))
 
 app.get('/', (req, res) => {
   try {
-    res.end(`<h1>Home page server file. Test value - ${process.env.TEST}.</h1>`)
+    request('https://jsonplaceholder.typicode.com/todos/1', (error, response, body) => {
+      if (!error) {
+        const stations = JSON.parse(body)
+        res.json(stations)
+      }
+    })
   } catch (error) {
     res.status(500).json({ message: 'some message' })
   }
