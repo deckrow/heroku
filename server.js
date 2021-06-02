@@ -21,4 +21,4 @@ app.get('/support', (req, res) => {
   res.end('<h1>Support page!</h1>')
 })
 
-app.listen(PORT, () => [console.log('Server has been started...')])
+app.listen(PORT, () => console.log('Server has been started...'))
