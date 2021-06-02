@@ -3,8 +3,14 @@ const app = express()
 
 const PORT = process.env.PORT || 80
 
+app.use(express.json({ extended: true }))
+
 app.get('/', (req, res) => {
-  res.end(`<h1>Home page server file. Test value - ${process.env.TEST}.</h1>`)
+  try {
+    res.end(`<h1>Home page server file. Test value - ${process.env.TEST}.</h1>`)
+  } catch (error) {
+    res.status(500).json({ message: 'some message' })
+  }
 })
 
 app.get('/about', (req, res) => {
